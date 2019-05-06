@@ -59,5 +59,33 @@ while (i<x):
     #close the door if no one is there
     print("testing")
 
-   
+   n=0
+    #l= len(encoding_persons)
+    while (n<x):
+        # compare features of the test frame with every training img
+        r = face_recognition.compare_faces([encoding_persons[n]],encoding_picture)
+        
+        n = n+1
+       
+        if r[0] == True:
+            b = str(n)
+            data = str.encode (b)
+            break
+        else:
+            data = str.encode ('0')
+        #data is the identity of the person in the test frame
+              
+    print (data)
+    
+    #sending data to arduino
+    arduino.write(data)
+    
+    #quit on pressing Q key
+    if cv2.waitKey(20) & 0xFF == ord('q'):
+        break
+
+#close every thing
+cap.release()
+arduino.close()
+cv2.destroyAllWindows()
     
