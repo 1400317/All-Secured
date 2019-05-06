@@ -36,5 +36,28 @@ while (i<x):
     encoding_persons.append (encoding_person)
    
     i = i+1
+    
+    while(True):
+    # Capture frame by frame
+    cap = cv2.VideoCapture(0)
+    ret, frame = cap.read()
+    cv2.imshow('frame',frame)
+   
+    #saving a test frame
+    img = "test.png"
+    cv2.imwrite(img, frame)
+    
+    #encode features of test pic.
+    picture = face_recognition.load_image_file(img)
+    encoding_picture1 = face_recognition.face_encodings(picture)
+
+    if len(encoding_picture1) > 0:
+         encoding_picture = face_recognition.face_encodings(picture)[0]    
+    else:
+        encoding_picture = encoding_person[0] + 1
+    #solved the problem of non-existing of any face in the frame
+    #close the door if no one is there
+    print("testing")
+
    
     
