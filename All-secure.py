@@ -37,7 +37,7 @@ while (i<x):
    
     i = i+1
     
-    while(True):
+while(True):
     # Capture frame by frame
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
@@ -59,7 +59,8 @@ while (i<x):
     #close the door if no one is there
     print("testing")
 
-   n=0
+                            #identifing
+    n=0
     #l= len(encoding_persons)
     while (n<x):
         # compare features of the test frame with every training img
